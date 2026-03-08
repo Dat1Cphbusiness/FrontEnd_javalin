@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carpool</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div class = "container">
+sender din anmodning...
+<button id="next">Start forfra</button>
+</div>
+
+<script>
+const ride = {
+name: sessionStorage.getItem("name"),
+role: sessionStorage.getItem("role"),
+date: sessionStorage.getItem("date"),
+to: sessionStorage.getItem("to"),
+from: sessionStorage.getItem("from"),
+smoking: sessionStorage.getItem("smoking"),
+comments: sessionStorage.getItem("comments"),
+
+};
+console.log(ride);
+
+const response = await fetch("/rides", {
+method: "POST",
+headers: { "Content-Type": "application/json" },
+body: JSON.stringify(ride)
+});
+console.log(response.status); // 201 hvis alt gik godt
+if(response.status=="201"){
+const response = document.querySelector(".container");
+    response.innerHTML=`<h1> Tak! Din anmodning er modtaget.<h1>`;
+    }
+</script>
+</body>
+</html>

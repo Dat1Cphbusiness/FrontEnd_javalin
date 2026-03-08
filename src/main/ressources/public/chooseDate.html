@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpool</title>
+    <link rel="stylesheet" href="css/chooseDate.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/javascript" src="dynamicStyling.js" defer></script>
+
+</head>
+<body>
+<div class="container">
+    <input type="date" id="dateInput">
+    <button id="next">Næste</button>
+</div>
+
+<script>
+    const role = sessionStorage.getItem("role");
+
+
+
+    document.querySelector(".container").addEventListener("input", (e) => {
+        sessionStorage.setItem("date", e.target.value);
+
+    });
+    const nextButton = document.querySelector("#next");
+    nextButton.addEventListener("click", ()=>{
+
+        window.location.href = "fromTo.html";
+    });
+
+</script>
+</body>
+</html>

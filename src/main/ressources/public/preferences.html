@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Carpool</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/preferences.css">
+  <script type="application/javascript" src="dynamicStyling.js" defer></script>
+</head>
+<body>
+
+<div class="container">
+
+  <label class="checkbox-label">
+    <input type="checkbox" id="smoking">
+    <span id="smokingLabel">Rygning tilladt</span>
+  </label>
+  <label>
+    <input type="text" id="username">
+    <span>Hvad skal vi kalde dig?</span>
+  </label>
+
+  <textarea id="comments" placeholder="Kommentarer..."></textarea>
+  <div id="preview"></div>
+  <button id="next">Næste</button>
+
+</div>
+
+<script>
+  const role = sessionStorage.getItem("role");
+
+
+
+  if (role === "passenger") {
+    document.querySelector("#smokingLabel").textContent = "Rygning ok?";
+  }
+
+
+
+  // preview alle værdierne i sessionStorage
+  const preview = document.querySelector("#preview");
+  const keys = ["role", "date", "from", "to"];
+
+
+  let html = "";
+  for (const key of keys) {
+    const value = sessionStorage.getItem(key) ?? "-";
+    html += `<p><strong>${key}:</strong> ${value}</p>`;
+  }
+  preview.innerHTML = html;
+
+  //alternativ syntaks:
+ /* preview.innerHTML = keys
+          .map(key => `<p><strong>${key}:</strong> ${sessionStorage.getItem(key) ?? "-"}</p>`)
+          .join("");*/
+const username = document.querySelector("#username");
+  const comments = document.querySelector("#comments");
+  const smoking = document.querySelector("#smoking");
+  const nextButton = document.querySelector("#next");
+  nextButton.addEventListener("click", ()=>{
+    sessionStorage.setItem("username", username.value);
+    sessionStorage.setItem("smoking", smoking.value);
+    sessionStorage.setItem("comments", comments.value);
+    window.location.href = "final.html";
+  });
+</script>
+
+</body>
+</html>

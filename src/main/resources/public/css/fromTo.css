@@ -37,9 +37,10 @@ select {
     border: none;
     cursor: pointer;
     padding: 10px;
-    transition: transform 0.3s;
+    box-shadow: none;
+   /* transition: transform 0.3s;*/
 }
 
 #toggleBtn:hover {
-    transform: rotate(180deg);
+  /*  transform: rotate(180deg);*/
 }

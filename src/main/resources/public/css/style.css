@@ -24,8 +24,8 @@ body {
     cursor: pointer;
     color: white;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
-
 }
+
 .btn:active {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
@@ -38,17 +38,24 @@ body {
     background-color: steelblue;
 }
 
-#next {
+button {
     padding: 20px 30px;
     font-size: 2rem;
-    background-color: green;
     border: none;
     border-radius: 20px;
     cursor: pointer;
     color: white;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+#next {
+
+    background-color: green;
 
 }
+.navigationBtn {
+    background-color: lightsteelblue;
+}
+
 
 
 
@@ -63,3 +70,4 @@ body {
 #preview p {
     margin: 6px 0;
 }
+

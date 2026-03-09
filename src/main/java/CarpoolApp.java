@@ -16,7 +16,9 @@ public class CarpoolApp {
         }
 
         Javalin app = Javalin.create(config -> {
-            config.staticFiles.add("/public", Location.CLASSPATH);
+            config.staticFiles.add(System.getProperty("user.dir") + "/src/main/resources/public", Location.EXTERNAL);
+
+            //config.staticFiles.add("/public", Location.CLASSPATH);
         });
 
         app.post("/rides", ctx -> {
@@ -30,16 +32,23 @@ public class CarpoolApp {
 
         app.get("/rides", ctx -> {
             List<Map> rides = mapper.readValue(FILE, List.class);
-            StringBuilder html = new StringBuilder("<ul>");
-            for (Map ride : rides) {
-                html.append("<li>")
-                        .append(ride.get("name")).append(": ")
-                        .append(ride.get("from")).append(" -> ")
-                        .append(ride.get("to")).append(" ")
-                        .append(ride.get("date"))
-                        .append("</li>");
+            StringBuilder html = new StringBuilder("<table>");
+            html.append("<tr><th>Navn</th><th>Dato</th><th>Fra</th><th>Til</th><th>Kommentarer</th><th>Rygning</th></tr>");
+
+        for (Map ride : rides) {
+               // html.append("<tr>")
+            String color = "driver".equals(ride.get("role")) ? "steelblue" : "orange";
+            html.append("<tr style='border-left: 6px solid ").append(color).append("'>")
+                    .append("<td>").append(ride.get("name")).append("</td>")
+                        .append("<td>").append(ride.get("date")).append("</td>")
+                        .append("<td>").append(ride.get("from")).append("</td>")
+                        .append("<td>").append(ride.get("to")).append("</td>")
+                        .append("<td>").append(ride.get("comments")).append("</td>")
+                        .append("<td>").append(ride.get("smoking")).append("</td>")
+                        .append("</tr>");
             }
-            html.append("</ul>");
+
+            html.append("</table>");
             ctx.html(html.toString());
         });
 

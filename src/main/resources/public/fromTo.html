@@ -41,8 +41,8 @@
     <button id="next">Næste</button>
     <script>
 
-        const role = sessionStorage.getItem("role");
-        const from = document.querySelector("#from");
+        const role = sessionStorage.getItem("role");  //skal bruges i loaded script(dynamicStyling.js) der sætter baggrundsfarven, men også i dette script, til at tilpasse copy
+        const from = document.querySelector("#from"); //
         const to = document.querySelector("#to");
 
 
@@ -65,13 +65,16 @@
         //Forhindre at der står den samme værdi i begge
 
         function syncDisabled() {
+            //sætter alle options i begge selectors til klikbar
             from.querySelectorAll("option").forEach(o => o.disabled = false);
             to.querySelectorAll("option").forEach(o => o.disabled = false);
 
+             //finder den option der har værdien af den anden til at være ikke-klikbar
+            //fx. hvis åkirkeby er valgt i den ene bliver den grå i den anden
             to.querySelector(`option[value="${from.value}"]`).disabled = true;
             from.querySelector(`option[value="${to.value}"]`).disabled = true;
 
-            // if neither has Rønne, force it into the one that just changed away from it
+            //hvis man vælger en anden by end rønne på et tidspunkt hvor der ikke står rønne i den anden, bliver from sat til rønne
             if (from.value !== "Ronne" && to.value !== "Ronne") {
                 from.value = "Ronne";
                 syncDisabled();

@@ -8,29 +8,20 @@
 </head>
 <body>
 <div class="container">
-    <div id="roles">
+    <div class = "row" id="roles">
         <button class="btn passenger">Passager</button>
         <button class="btn driver">Chauffør</button>
     </div>
 
 </div>
-<style>
-    #roles{
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
-</style>
+
 <script>
     document.querySelector(".container").addEventListener("click", (e) => {
-
         const role = e.target.textContent==="Passager"?"passenger":"driver";
         sessionStorage.setItem("role", role);
         window.location.href = "chooseDate.html";
 
     });
-
-
 </script>
 </body>
 </html>

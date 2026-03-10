@@ -1,4 +1,4 @@
-.checkbox-label {
+label {
     font-size: 1.5rem;
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ textarea {
     font-size: 1.2rem;
     border: 2px solid #ccc;
     border-radius: 16px;
-    width: 400px;
+    width: auto;
     height: 120px;
     resize: none;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);

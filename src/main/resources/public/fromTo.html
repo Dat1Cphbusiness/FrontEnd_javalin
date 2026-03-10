@@ -11,7 +11,7 @@
 
 
 
-    <div class="route">
+    <div class="row">
         <label for ="from">Fra:</label>
         <select id="from">
             <option value="Nexo">Nexø</option>
@@ -60,6 +60,7 @@
             const temp = from.value;
             from.value = to.value;
             to.value = temp;
+            syncDisabled();
         });
 
         //Forhindre at der står den samme værdi i begge

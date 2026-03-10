@@ -9,44 +9,21 @@
 <body>
 
 
-<div class = "container">
+<div class="container">
     <div id="response">
         sender din anmodning...
     </div>
-<button class="navigationBtn" onclick="window.location.href='index.html'">Start forfra</button>
-<button class="navigationBtn" onclick="window.location.href='/ridesList.html'">Se alle ture</button>
+    <button class="navigationBtn" onclick="window.location.href='index.html'">Start forfra</button>
+    <button class="navigationBtn" onclick="window.location.href='/ridesList.html'">Se alle ture</button>
 
 </div>
 
 <script>
-    const role = sessionStorage.getItem("role");
-const ride = {
-name: sessionStorage.getItem("username"),
-role: sessionStorage.getItem("role"),
-date: sessionStorage.getItem("date"),
-to: sessionStorage.getItem("to"),
-from: sessionStorage.getItem("from"),
-smoking: sessionStorage.getItem("smoking"),
-comments: sessionStorage.getItem("comments"),
-
-};
-console.log(ride);
-sendData()
-
-async function sendData(){
-const response = await fetch("/rides", {
-method: "POST",
-headers: { "Content-Type": "application/json" },
-body: JSON.stringify(ride)
-});
-    console.log(response.status=="201"); // 201 hvis alt gik godt
-    if(response.status=="201"){
-        const response = document.querySelector("#response");
-        response.innerHTML=`<h1> Tak! Din anmodning er modtaget.<h1>`;
-    }
-
-}
-
+    /* todo:
+    *  hent variable ud af sessionStorage
+    *  gem i et objekt
+    *  send objektet som json til /rides med POST
+    * */
 
 
 </script>

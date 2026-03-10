@@ -24,14 +24,8 @@ loader ture...
 </div>
 </div>
 <script>
-    async function loadRides() {
-        const response = await fetch("/rides");
-        const html = await response.text();
-        console.log(html);
-        document.querySelector("#ridesList").innerHTML = html;
-    }
+    //todo fetch /rides modtag response text (html) vis i ridesList
 
-    loadRides();
 </script>
 
 </body>

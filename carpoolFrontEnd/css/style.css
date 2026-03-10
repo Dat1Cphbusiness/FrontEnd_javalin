@@ -1,0 +1,78 @@
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    transition: background-color 0.3s;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    color: white;
+}
+.row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    padding: 40px 60px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.passenger {
+    background-color: orange;
+}
+
+.driver {
+    background-color: steelblue;
+}
+
+button {
+    padding: 20px 30px;
+    font-size: 2rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+}
+#next {
+
+    background-color: green;
+
+}
+.navigationBtn {
+    background-color: lightsteelblue;
+}
+
+
+
+
+#preview {
+    background: rgba(255,255,255,0.3);
+    border-radius: 16px;
+    padding: 20px;
+    font-size: 1.1rem;
+    min-width: 300px;
+}
+
+#preview p {
+    margin: 6px 0;
+}
+

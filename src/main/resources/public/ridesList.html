@@ -25,7 +25,13 @@ loader ture...
 </div>
 <script>
     //todo fetch /rides modtag response text (html) vis i ridesList
-
+     async function load(){
+         const response = await fetch("/rides");
+         const html = await response.text();
+         const ridesList = document.querySelector("#ridesList");
+         ridesList.innerHTML = html;
+     }
+     load();
 </script>
 
 </body>

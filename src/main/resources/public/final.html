@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carpool</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/javascript" src="dynamicStyling.js" defer></script>
+</head>
+<body>
+
+
+<div class="container">
+    <div id="response">
+        sender din anmodning...
+    </div>
+    <button class="navigationBtn" onclick="window.location.href='index.html'">Start forfra</button>
+    <button class="navigationBtn" onclick="window.location.href='/ridesList.html'">Se alle ture</button>
+
+</div>
+
+<script>
+
+    const role = sessionStorage.getItem("role");
+
+    const ride={
+        name:sessionStorage.getItem("username"),
+        date: sessionStorage.getItem("date"),
+        role:sessionStorage.getItem("role"),
+        to :sessionStorage.getItem("to"),
+        from:sessionStorage.getItem("from"),
+        comments:sessionStorage.getItem("comments"),
+        smoking:sessionStorage.getItem("smoking"),
+    }
+
+    send();
+
+    async function send(){
+
+        const response = await fetch("/rides",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body: JSON.stringify(ride)
+            });
+
+
+        console.log(response.status);
+        if(response.status == "201"){
+           const responsetext = document.querySelector("#response");
+           responsetext.innerHTML = "Tak. Din anmodning er modtaget";
+
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
